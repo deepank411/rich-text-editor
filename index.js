@@ -8,8 +8,8 @@ function get_selection() {
     txt = window.getSelection();
     oRange = txt.getRangeAt(0); //get the text range
     oRect = oRange.getBoundingClientRect();
-    console.log(oRect);
-    console.log(oRect.top);
+    // console.log(oRect);
+    // console.log(oRect.top);
   }
   // for cross browser compatibility
   // else if (document.getSelection) {
@@ -18,14 +18,24 @@ function get_selection() {
   // else if (document.selection) {
   //   txt = document.selection.createRange().text;
   // }
-  return txt;
+  return [txt, oRect];
+}
+
+function placeToolbar(x_pos, y_pos) {
+  var d = document.getElementById('editor-toolbar');
+  d.style.position = "absolute";
+  d.style.left = x_pos-80+'px';
+  d.style.top = y_pos-60+'px';
 }
 
 $(".content").dblclick(function() {
-  mytext = get_selection();
+  mytext = get_selection()[0];
+  coord = get_selection()[1];
+  console.log(coord);
   if(mytext != ''){
     // alert("double click " + mytext);
     $(".editor-toolbar").css("display","block");
+    placeToolbar(coord.left, coord.top);
   } else{
     $(".editor-toolbar").css("display","none");
   }
@@ -33,10 +43,13 @@ $(".content").dblclick(function() {
 
 // select text by horizontal selection via cursor
 $(".content").bind("mouseup", function(e) {
-  mytext = get_selection();
+  mytext = get_selection()[0];
+  coord = get_selection()[1];
+  console.log(coord);
   if(mytext != ''){
     // alert("selection " + mytext);
     $(".editor-toolbar").css("display","block");
+    placeToolbar(coord.left, coord.top);
   } else{
     $(".editor-toolbar").css("display","none");
   }
