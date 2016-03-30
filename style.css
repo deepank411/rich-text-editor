@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+body{
+  padding: 20px;
+  font-family: 'Raleway';
+  background-color: #eee;
+}
+.content{
+  padding: 20px;
+  font-size: 20px;
+  border: 1px #BDC3C7 solid;
+}
+.center{
+  text-align: center;
+}
+ul.editor-toolbar{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+ul.editor-toolbar li {
+  display: inline;
+}
+.bold {
+  font-weight:bold;
+}
+.italic {
+  font-style:italic;
+}
+.underline {
+  text-decoration: underline;
+}
+.color{
+  color: #ff0000;
+}
+
+.editor-toolbar {
+  background-color: #2F1E07;
+  /*background: -webkit-linear-gradient(top, #2F1E07, rgba(36, 36, 36, 0.75));*/
+  /*background: linear-gradient(to bottom, #2F1E07, rgba(36, 36, 36, 0.75));*/
+  border: 1px solid #2F1E07;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #2F1E07;
+  width: 213px;
+}
+.editor-toolbar li button {
+  background-color: #2F1E07;
+  /*background: -webkit-linear-gradient(top, #2F1E07, rgba(36, 36, 36, 0.89));*/
+  /*background: linear-gradient(to bottom, #2F1E07, rgba(36, 36, 36, 0.89));*/
+  border: 0;
+  border-right: 1px solid #2F1E07;
+  border-left: 1px solid #2F1E07;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  height: 50px;
+  min-width: 50px;
+  -webkit-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+}
+.editor-toolbar li button:hover {
+  background-color: #ff9000;
+  color: white;
+}
+.editor-toolbar li .editor-button-active {
+  background-color: #2F1E07;
+  /*background: -webkit-linear-gradient(top, #2F1E07, rgba(0, 0, 0, 0.89));*/
+  /*background: linear-gradient(to bottom, #2F1E07, rgba(0, 0, 0, 0.89));*/
+  color: #fff;
+}
