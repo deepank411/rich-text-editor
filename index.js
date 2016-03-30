@@ -6,11 +6,18 @@ function get_selection() {
   var txt = '';
   if (window.getSelection) {
     txt = window.getSelection();
-  } else if (document.getSelection) {
-    txt = document.getSelection();
-  } else if (document.selection) {
-    txt = document.selection.createRange().text;
+    oRange = txt.getRangeAt(0); //get the text range
+    oRect = oRange.getBoundingClientRect();
+    console.log(oRect);
+    console.log(oRect.top);
   }
+  // for cross browser compatibility
+  // else if (document.getSelection) {
+  //   txt = document.getSelection();
+  // }
+  // else if (document.selection) {
+  //   txt = document.selection.createRange().text;
+  // }
   return txt;
 }
 
@@ -54,10 +61,11 @@ $(".done").click(function(){
   var content = temp.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
   console.log(content);
   var re = /<a>(.*?)<\/a>/g;
-  var links = content.match(re); // regex to match all links of this format
+  var links = content.match(re); // regex to match all links of <a>()</a> format
   console.log(links);
 
   var ul = document.getElementById("links-display");
+  ul.innerHTML = ""; // prevents repeated adding of li on multiple clicks on button
   for(var i = 0; i< links.length; i++){ // populate ul with the links colored red and blue alternatively
     var li = document.createElement("li");
     ul.appendChild(li);
@@ -68,7 +76,7 @@ $(".done").click(function(){
 $(".match").click(function(){
   var content = document.getElementById("content").innerText;
   console.log(content);
-  var re = /\b\w{4}\b/g; // regex to match all 4 letter words
+  var re = /\b\w{4}\b/g; // regex to find all 4 letter words
   res = content.match(re);
   console.log(res);
 });

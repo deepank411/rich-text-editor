@@ -42,6 +42,7 @@ ul.editor-toolbar li {
   border-radius: 5px;
   box-shadow: 0 0 3px #2F1E07;
   width: 213px;
+  z-index: 1000;
 }
 .editor-toolbar li button {
   background-color: #2F1E07;
