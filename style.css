@@ -68,3 +68,10 @@ ul.editor-toolbar li {
   /*background: linear-gradient(to bottom, #2F1E07, rgba(0, 0, 0, 0.89));*/
   color: #fff;
 }
+
+li a{
+  color: blue;
+}
+li:nth-child(odd) a{
+  color: red;
+}

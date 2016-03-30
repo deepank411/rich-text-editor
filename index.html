@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> Text Editor</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -15,9 +15,9 @@
 <body>
   <div class="container">
     <h1 class="center">TEXT EDITOR</h1>
-    <div class="content" contenteditable="true">
+    <div class="content" contenteditable="true" id="content">
       <p>Write here...</p>
-      <p>Nunc vestibulum eleifend lorem, at aliquam erat vestibulum vel. Fusce rutrum varius elementum. Vivamus volutpat nulla erat, id fermentum est suscipit sit amet. Nam laoreet nunc eu ultrices cursus. Ut efficitur, orci non cursus varius, nulla purus vehicula orci, venenatis ornare urna tortor luctus nisl. In vulputate vel nunc non hendrerit. Donec eu tempus ante. Nullam mattis metus at enim aliquam, vel scelerisque ligula volutpat. Etiam eget velit ac nulla sollicitudin aliquam at sit amet dolor.</p>
+      <p>Nunc vestibulum eleifend lorem, at aliquam erat vestibulum vel. Fusce rutrum varius elementum. Vivamus volutpat nulla erat, id fermentum est suscipit sit amet. Nam laoreet nunc eu ultrices cursus. <a>this is link 1</a> Ut efficitur, orci non cursus varius, nulla purus vehicula orci, venenatis ornare urna tortor luctus nisl. In vulputate vel nunc non hendrerit. <a>this is link 2</a> Donec eu tempus ante. Nullam mattis metus at enim aliquam, vel scelerisque ligula volutpat. <a>this is link 3</a> Etiam eget velit ac nulla sollicitudin aliquam at sit amet dolor.</p>
     </div>
     <ul id="editor-toolbar" class="editor-toolbar" style="display:none">
       <li>
@@ -32,62 +32,17 @@
       <li>
         <button class="editor-action editor-action-changecolor editor-button-last"><i class="fa fa-font" ></i></i></button>
       </li>
+    </ul><br>
+    <button type="button" class="btn btn-default done" style="float: right">Done</button>
+    <button type="button" class="btn btn-default match" style="float: right">Randomize</button>
+    <ul class="links-display" id="links-display">
     </ul>
   </div>
 
   <script src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="index.js"></script>
-
-  <!-- <script>
-    $(document).ready(function(){
-      $("p").addClass("paragraph");
-    });
-  </script>
-  <script>
-    function get_selection() {
-      var txt = '';
-      if (window.getSelection) {
-        txt = window.getSelection();
-      } else if (document.getSelection) {
-        txt = document.getSelection();
-      } else if (document.selection) {
-        txt = document.selection.createRange().text;
-      }
-      return txt;
-    }
-
-    $(".content").dblclick(function(e) {
-      mytext = get_selection();
-      if(mytext != ''){
-        // alert("double click " + mytext);
-        $(".editor-toolbar").css("display","block");
-      } else{
-        $(".editor-toolbar").css("display","none");
-      }
-    });
-    $(".content").bind("mouseup", function(e) {
-      mytext = get_selection();
-      if(mytext != ''){
-        // alert("selection " + mytext);
-        $(".editor-toolbar").css("display","block");
-      } else{
-        $(".editor-toolbar").css("display","none");
-      }
-    });
-    $('.editor-action-bold').click(function(){
-      document.execCommand('bold');
-    });
-    $('.editor-action-italic').click(function(){
-      document.execCommand('italic');
-    });
-    $('.editor-action-underline').click(function(){
-      document.execCommand('underline');
-    });
-    $('.editor-action-changecolor').click(function(){
-      document.execCommand('foreColor', false,  'red');
-    });
-  </script> -->
+  <!-- <script src="word.js"></script> -->
 
 </body>
 </html
