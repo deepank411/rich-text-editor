@@ -36,18 +36,14 @@ ul.editor-toolbar li {
 
 .editor-toolbar {
   background-color: #2F1E07;
-  /*background: -webkit-linear-gradient(top, #2F1E07, rgba(36, 36, 36, 0.75));*/
-  /*background: linear-gradient(to bottom, #2F1E07, rgba(36, 36, 36, 0.75));*/
   border: 1px solid #2F1E07;
   border-radius: 5px;
   box-shadow: 0 0 3px #2F1E07;
-  width: 213px;
+  width: 215px;
   z-index: 1000;
 }
 .editor-toolbar li button {
   background-color: #2F1E07;
-  /*background: -webkit-linear-gradient(top, #2F1E07, rgba(36, 36, 36, 0.89));*/
-  /*background: linear-gradient(to bottom, #2F1E07, rgba(36, 36, 36, 0.89));*/
   border: 0;
   border-right: 1px solid #2F1E07;
   border-left: 1px solid #2F1E07;
@@ -60,13 +56,11 @@ ul.editor-toolbar li {
   transition: background-color .2s ease-in;
 }
 .editor-toolbar li button:hover {
-  background-color: #ff9000;
+  background-color: #442700;
   color: white;
 }
 .editor-toolbar li .editor-button-active {
   background-color: #2F1E07;
-  /*background: -webkit-linear-gradient(top, #2F1E07, rgba(0, 0, 0, 0.89));*/
-  /*background: linear-gradient(to bottom, #2F1E07, rgba(0, 0, 0, 0.89));*/
   color: #fff;
 }
 

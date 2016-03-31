@@ -5,17 +5,20 @@ $(document).ready(function(){
 function get_selection() {
   var txt = '';
   if (window.getSelection) {
+    console.log("");
     txt = window.getSelection();
     oRange = txt.getRangeAt(0); //get the text range
-    oRect = oRange.getBoundingClientRect();
+    oRect = oRange.getBoundingClientRect(); // get coordinates of selection
     // console.log(oRect);
     // console.log(oRect.top);
   }
   // for cross browser compatibility
   // else if (document.getSelection) {
+  //   console.log("doc");
   //   txt = document.getSelection();
   // }
   // else if (document.selection) {
+  //   console.log("doc range");
   //   txt = document.selection.createRange().text;
   // }
   return [txt, oRect];
