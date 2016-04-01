@@ -2,6 +2,12 @@ arr = new Array();
 
 function doneFunc(){
    console.log("Random words:", arr, arr.length);
+   for (var i = 0 ;i<indices.length; i++){
+   	content = content.substr(0, indices[i]) + arr[i] + content.substr(indices[i]+4);
+   }
+   console.log(content);
+   document.getElementById("content").innerHTML = ``; // backticks used for multipline strings
+   document.getElementById("content").innerHTML = content;
 }
 
 window.getData=function()
@@ -51,8 +57,8 @@ function placeToolbar(x_pos, y_pos) {
 }
 
 $(".content").dblclick(function() {
-   mytext = get_selection()[0];
-   coord = get_selection()[1];
+   var mytext = get_selection()[0];
+   var coord = get_selection()[1];
    // console.log(coord);
    if(mytext != ''){
       // alert("double click " + mytext);
@@ -63,10 +69,10 @@ $(".content").dblclick(function() {
    }
 });
 
-// select text by horizontal selection via cursor
+// select text by horizontal selection via cursor and mouse drag
 $(".content").bind("mouseup", function(e) {
-   mytext = get_selection()[0];
-   coord = get_selection()[1];
+   var mytext = get_selection()[0];
+   var coord = get_selection()[1];
    // console.log(coord);
    if(mytext != ''){
       // alert("selection " + mytext);
@@ -102,18 +108,19 @@ $(".done").click(function(){
    ul.innerHTML = ""; // prevents repeated adding of li on multiple clicks of button
    for(var i = 0; i< links.length; i++){ // populate ul with the links colored red and blue alternatively
       var li = document.createElement("li"); // create li
-      ul.appendChild(li); // add li to ul
+      ul.appendChild(li); // append li to ul
       li.innerHTML = li.innerHTML + links[i]; // add content to li
    }
 });
 
 $(".match").click(function(){
-   var content = document.getElementById("content").innerHTML;
+   content = document.getElementById("content").innerHTML;
    // var content = document.getElementById("content").innerText;
-   // console.log(content);
+   console.log(content);
    var re = /\b\w{4}\b/gi; // regex to find all 4 letter words
    // res = content.match(re);
-   indices = [], words = [];
+   indices = [];
+   words = [];
    while(result = re.exec(content)){ // exec() tests for a match in a string.
       indices.push(result.index);
       words.push(result[0]);
