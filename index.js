@@ -1,21 +1,16 @@
-var counter = 0;
-// l = 10;
 arr = new Array();
 
 function doneFunc(){
-   console.log("words are: " + arr);
-   console.log("length of arr is: " + arr.length);
+   console.log("Random words:", arr, arr.length);
 }
 
 window.getData=function()
 {
    $.ajax({
       url:'http://randomword.setgetgo.com/get.php?len=4',
-      async: false,
       dataType: 'jsonp',
       success:function(data){
          arr.push(data.Word);
-         $('.quoteList').append('<li>' + data.Word +'</li>');
          if(arr.length == l)
          doneFunc();
       }
@@ -29,7 +24,7 @@ $(document).ready(function(){
 function get_selection() {
    var txt = '';
    if (window.getSelection) {
-      console.log("");
+      // console.log("window selection");
       txt = window.getSelection();
       oRange = txt.getRangeAt(0); //get the text range
       oRect = oRange.getBoundingClientRect(); // get coordinates of selection
@@ -58,7 +53,7 @@ function placeToolbar(x_pos, y_pos) {
 $(".content").dblclick(function() {
    mytext = get_selection()[0];
    coord = get_selection()[1];
-   console.log(coord);
+   // console.log(coord);
    if(mytext != ''){
       // alert("double click " + mytext);
       $(".editor-toolbar").css("display","block");
@@ -72,7 +67,7 @@ $(".content").dblclick(function() {
 $(".content").bind("mouseup", function(e) {
    mytext = get_selection()[0];
    coord = get_selection()[1];
-   console.log(coord);
+   // console.log(coord);
    if(mytext != ''){
       // alert("selection " + mytext);
       $(".editor-toolbar").css("display","block");
@@ -98,27 +93,36 @@ $('.editor-action-changecolor').click(function(){
 $(".done").click(function(){
    var temp = document.getElementById("content").outerHTML;
    var content = temp.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-   console.log(content);
+   // console.log(content);
    var re = /<a>(.*?)<\/a>/g;
    var links = content.match(re); // regex to match all links of <a>()</a> format
    console.log(links);
 
    var ul = document.getElementById("links-display");
-   ul.innerHTML = ""; // prevents repeated adding of li on multiple clicks on button
+   ul.innerHTML = ""; // prevents repeated adding of li on multiple clicks of button
    for(var i = 0; i< links.length; i++){ // populate ul with the links colored red and blue alternatively
-      var li = document.createElement("li");
-      ul.appendChild(li);
-      li.innerHTML = li.innerHTML + links[i];
+      var li = document.createElement("li"); // create li
+      ul.appendChild(li); // add li to ul
+      li.innerHTML = li.innerHTML + links[i]; // add content to li
    }
 });
 
 $(".match").click(function(){
-   var content = document.getElementById("content").innerText;
-   console.log(content);
-   var re = /\b\w{4}\b/g; // regex to find all 4 letter words
-   res = content.match(re);
-   console.log(res, res.length);
-   l = res.length;
+   var content = document.getElementById("content").innerHTML;
+   // var content = document.getElementById("content").innerText;
+   // console.log(content);
+   var re = /\b\w{4}\b/gi; // regex to find all 4 letter words
+   // res = content.match(re);
+   indices = [], words = [];
+   while(result = re.exec(content)){ // exec() tests for a match in a string.
+      indices.push(result.index);
+      words.push(result[0]);
+   }
+   // console.log(content);
+   console.log("indices for content words:", indices, indices.length);
+   console.log("content words:", words, words.length);
+   // console.log("words from content ", res, res.length);
+   l = words.length;
    for(i = 0; i < l; i++){
       getData();
    }
