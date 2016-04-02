@@ -1,32 +1,3 @@
-arr = new Array();
-
-function doneFunc(){
-   console.log("Random words:", arr, arr.length);
-   for (var i = 0 ;i<indices.length; i++){
-   	content = content.substr(0, indices[i]) + arr[i] + content.substr(indices[i]+4);
-   }
-   console.log(content);
-   document.getElementById("content").innerHTML = ``; // backticks used for multipline strings
-   document.getElementById("content").innerHTML = content;
-}
-
-window.getData=function()
-{
-   $.ajax({
-      url:'http://randomword.setgetgo.com/get.php?len=4',
-      dataType: 'jsonp',
-      success:function(data){
-         arr.push(data.Word);
-         if(arr.length == l)
-         doneFunc();
-      }
-   });
-}
-
-$(document).ready(function(){
-   $("p").addClass("paragraph");
-});
-
 function get_selection() {
    var txt = '';
    if (window.getSelection) {
@@ -37,15 +8,6 @@ function get_selection() {
       // console.log(oRect);
       // console.log(oRect.top);
    }
-   // for cross browser compatibility
-   // else if (document.getSelection) {
-   //   console.log("doc");
-   //   txt = document.getSelection();
-   // }
-   // else if (document.selection) {
-   //   console.log("doc range");
-   //   txt = document.selection.createRange().text;
-   // }
    return [txt, oRect];
 }
 
@@ -117,8 +79,9 @@ $(".match").click(function(){
    content = document.getElementById("content").innerHTML;
    // var content = document.getElementById("content").innerText;
    console.log(content);
-   var re = /\b\w{4}\b/gi; // regex to find all 4 letter words
+   var re = /\b(?!font)\w{4}\b/g; // regex to find all 4 letter words except the word font
    // res = content.match(re);
+   arr = [];
    indices = [];
    words = [];
    while(result = re.exec(content)){ // exec() tests for a match in a string.
@@ -134,3 +97,26 @@ $(".match").click(function(){
       getData();
    }
 });
+
+window.getData=function()
+{
+   $.ajax({
+      url:'http://randomword.setgetgo.com/get.php?len=4',
+      dataType: 'jsonp',
+      success:function(data){
+         arr.push(data.Word);
+         if(arr.length == l)
+         doneFunc();
+      }
+   });
+}
+
+function doneFunc(){
+   console.log("Random words:", arr, arr.length);
+   for (var i = 0 ;i<indices.length; i++){
+   	content = content.substr(0, indices[i]) + arr[i] + content.substr(indices[i]+4);
+   }
+   console.log(content);
+   document.getElementById("content").innerHTML = ``; // backticks used for multi line strings
+   document.getElementById("content").innerHTML = content;
+}
